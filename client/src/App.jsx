@@ -11,11 +11,11 @@ import Header from './Component/Header.jsx';
 
 function App() {
   return <BrowserRouter>
-    <Header/>
+    <Header />
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/SignIn' element={<SignIn />} />
-      <Route path='/Signout' element={<Signout />} />
+      <Route path='/SignOut' element={<Signout />} />
       <Route path='/About' element={<About />} />
       <Route path='/Profile' element={<Profile />} />
     </Routes></BrowserRouter>
