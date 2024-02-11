@@ -7,6 +7,7 @@ import SignIn from './pages/SignIn.jsx';
 import Signout from './pages/SignOut.jsx';
 import Profile from './pages/Profile.jsx';
 import Header from './Component/Header.jsx';
+import Signup from './pages/Signup.jsx';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <Route path='/SignOut' element={<Signout />} />
       <Route path='/About' element={<About />} />
       <Route path='/Profile' element={<Profile />} />
+      <Route path='/Signup' element={<Signup />} />
     </Routes></BrowserRouter>
 
 }
