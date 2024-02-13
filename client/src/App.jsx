@@ -1,5 +1,4 @@
 import React from 'react'
-import './index.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
@@ -21,7 +20,7 @@ function App() {
       <Route path='/About' element={<About />} />
       <Route path='/Profile' element={<Profile />} />
       <Route path='/Signup' element={<Signup />} />
-      <Route path='/Signin' element={<Signin/>}/>
+      <Route path='/Signin' element={<Signin />} />
     </Routes></BrowserRouter>
 
 }
