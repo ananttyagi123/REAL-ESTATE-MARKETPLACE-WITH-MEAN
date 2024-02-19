@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
+import '../pages/index.css'
 const Signup = () => {
   const [formData, setFormData] = useState({});
   const [error, setError] = useState(null);
@@ -66,6 +66,7 @@ const Signup = () => {
         />
         <input type="date" className='p-3 rounded-lg' id='password' onChange={handleChange} onClick={borderClass} />
         <button className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 mt-5'>Sing up</button>
+        
       </form>
       <div className="text-slate-900 p-2 mt-4 flex gap-4">
         <p>Have an account?</p>

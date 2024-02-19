@@ -1,10 +1,23 @@
 import React from 'react';
-const OAuth = () => {
-  return (
-    <div>
-      <button className='auth bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 mt-5'>O Auth</button>
-    </div>
+import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth'
+import app from '../firebase';
+
+export default function OAuth() {
+  const handleAuth = async () => {
+    try {
+      const provider = new GoogleAuthProvider();
+      const auth = getAuth(app);
+      const result = signInWithPopup(auth, provider);
+      console.log(result);
+    }
+    catch (error) {
+      console.log("couldn't Sign in with Google!", error);
+    }
+  };
+  return (<>
+
+    <button className='bg-red-700 text-white p-3 rounded-lg uppercase hover:opacity-95 my-2 uppercase' onClick={handleAuth}>Continue with google</button>
+  </>
   )
 }
 
-export default OAuth;

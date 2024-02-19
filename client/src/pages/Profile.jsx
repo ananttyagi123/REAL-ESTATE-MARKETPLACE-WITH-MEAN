@@ -1,9 +1,9 @@
 import React from 'react'
-
+import '../pages/index.css'
 const Profile = () => {
   return (
     <div>Profile</div>
   )
 }
 
-export default Profile
+export default Profile;

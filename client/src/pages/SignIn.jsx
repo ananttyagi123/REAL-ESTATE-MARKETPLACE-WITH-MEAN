@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import '../client/src/index.css';
+import '../pages/index.css'
 import { Link, useNavigate } from 'react-router-dom';
 import OAuth from '../Component/OAuth';
 const Signin = () => {
@@ -73,11 +73,12 @@ const Signin = () => {
     <div className='p-3 max-w-lg mx-auto'>
       <h1 className="text-3xl text-center font-semibold my-7">Sign in</h1>
       <form action="" onSubmit={handleSubmit} className='flex flex-col gap-4'>
-        <input type="email" placeholder='email' className='border-none  p-3 rounded-lg' id='email' onChange={handleChange} onClick={borderClass} onAbort={(e) => {
+        <input type="email" placeholder='email' className='border-none  p-3 rounded-lg bg-stone-300' id='email' onChange={handleChange} onClick={borderClass} onAbort={(e) => {
           e.target.className = 'border-sky-700 rounded-lg p-3'
         }} />
-        <input type="password" placeholder='password' className='border-none p-3 rounded-lg' maxLength='14' id='password' onChange={handleChange} onClick={borderClass} />
-        <button className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 mt-5'>Sign in</button>
+        <input type="password" placeholder='password' className='border-none p-3 rounded-lg bg-stone-300' maxLength='14' id='password' onChange={handleChange} onClick={borderClass} />
+        <button className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 mt-[20px]'>Sign in</button>
+
         {userFound ? null : <p>Wrong Credentials!</p>}
         <OAuth />
       </form>
