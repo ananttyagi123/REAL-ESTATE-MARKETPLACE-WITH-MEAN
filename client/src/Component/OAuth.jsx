@@ -3,10 +3,11 @@ import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth'
 import app from '../firebase';
 
 export default function OAuth() {
-  const handleAuth = async () => {
+  const handleAuth = () => {
     try {
       const provider = new GoogleAuthProvider();
       const auth = getAuth(app);
+      console.log(auth);
       const result = signInWithPopup(auth, provider);
       console.log(result);
     }
