@@ -20,13 +20,15 @@ export const signin = async (req, res, next) => {
   try {
     // findOne is a mongoDB method from user schema
     const validUser = await user.findOne({ email });
-    if (!validUser) return next(errorHandler(404, 'User not Found!'));
-    // Check if the provided password matches the stored password hash
-  
+    if (!validUser) return (
+      next(errorHandler(404, 'User not Found!')));
 
-    const validPassword =  password === validUser.password
-    if (!validPassword) return next(errorHandler(401, 'Wrong Credentials!'));
-   
+    // Check if the provided password matches the stored password hash
+
+
+    const validPassword = password === validUser.password
+    if (!validPassword) return next(errorHandler(404, 'Wrong Credentials!'));
+
 
     // AUTHENTICATE THE USER 
     const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);
