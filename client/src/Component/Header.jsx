@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 
 export default function Header() {
+
   return (<>
     <header className='bg-slate-600 shadow-md p-4'>
       <div className='flex justify-between items-center max-w-6xl mx-auto'>
@@ -28,8 +29,15 @@ export default function Header() {
           <Link to='/SignIn'>
             <li className=' hover:underline decoration-sky-500 text-white'>SignIn</li>
           </Link>
+          <Link to='/Profile'>
+            
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_AYwemTu1ORazF2Jjt1WGW_X-nKQ3r7SEJw&usqp=CAU" alt="profile" className="flex justify-end rounded-full h-10 w-10 ml-5" />
+          </Link>
         </ul>
       </div>
+
+
+
     </header>
   </>
 
