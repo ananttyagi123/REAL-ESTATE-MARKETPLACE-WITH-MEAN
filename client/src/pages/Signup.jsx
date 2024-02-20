@@ -52,20 +52,20 @@ const Signup = () => {
         <input
           type="text"
           placeholder='username'
-          className='border-none p-3 rounded-lg'
+          className='border-none p-3 rounded-lg bg-solid-300'
           id='username'
           onChange={handleChange}
         />
         <input
           type="email"
           placeholder='email'
-          className='border-none p-3 rounded-lg'
+          className='border-none p-3 rounded-lg bg-solid-300'
           id='email'
           onChange={handleChange} onClick={borderClass}
         />
-        <input type="password" placeholder='password' id='pass' className='border p-3 rounded-lg' onChange={handleChange} maxLength="8" onClick={borderClass}
+        <input type="password" placeholder='password' id='pass' className='border p-3 rounded-lg bg-solid-300' onChange={handleChange} maxLength="8" onClick={borderClass}
         />
-        <input type="date" className='p-3 rounded-lg' id='password' onChange={handleChange} onClick={borderClass} />
+        <input type="date" className='p-3 rounded-lg bg-solid-300' id='password' onChange={handleChange} onClick={borderClass} />
         <button className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 mt-5'>Sing up</button>
 
       </form>
