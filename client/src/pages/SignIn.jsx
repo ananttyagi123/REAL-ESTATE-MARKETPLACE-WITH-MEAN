@@ -52,7 +52,7 @@ const Signin = () => {
   }
 
   const borderClass = (e) => {
-    (e) => e.target.className = 'p-3 rounded-lg border-amber-700'
+    (e) => e.target.className = 'p-3 rounded-lg'
   }
   console.log(formData);
 

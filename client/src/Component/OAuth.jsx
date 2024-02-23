@@ -1,6 +1,6 @@
 import React from 'react';
 import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth'
-import app from '../firebase';
+import app from '../pages/firebase';
 
 export default function OAuth() {
   const handleAuth = async () => {
@@ -9,12 +9,12 @@ export default function OAuth() {
       const auth = getAuth(app);
       console.log(auth);
       const result = signInWithPopup(auth, provider);
-      const res = await fetch('/api/auth/google',{
-        method:'POST',
-        headers:{
-       'Content-type':'application/json',
+      const res = await fetch('/api/auth/google', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
         },
-      body: JSON.stringify({name:result.user.displayname, email:result.user.email, photo: result.user.photoURL }),
+        body: JSON.stringify({ name: result.user.displayname, email: result.user.email, photo: result.user.photoURL }),
       })
       const data = await res.json();
     }
