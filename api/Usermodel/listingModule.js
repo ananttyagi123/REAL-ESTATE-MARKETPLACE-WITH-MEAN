@@ -13,13 +13,50 @@ const listingSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    regularPrice:{
-      type:number,
-      required:true,
+    regularPrice: {
+      type: Number,
+      required: true,
     },
-    discountPrice:{
-
+    bathrooms: {
+      type: Number,
+      required: true,
+    },
+    bedrooms: {
+      type: Number,
+      required: true,
+    },
+    furnished: {
+      type: Boolean,
+      required: true,
+    },
+    discountPrice: {
+      type: Number,
+      required: true,
+    },
+    parking: {
+      type: Boolean,
+      required: true,
+    },
+    offer: {
+      type: String,
+      required: true,
+    },
+    type: {
+      type: String,
+      required: true,
+    },
+    imageURL: {
+      type: Array,
+      required: true,
     }
+    , userRef: {
+      type: String,
+      required: true,
+    }
+
 
   }
 )
+
+const Listing = mongoose.model('Listing', listingSchema);
+export default Listing;

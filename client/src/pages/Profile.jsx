@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom';
 import '../pages/index.css'
 import { useRef } from 'react'
 import app from './firebase.js';
@@ -96,7 +97,11 @@ const Profile = () => {
         <input defaultValue={formData.email} onChange={handleChange} type="text" placeholder='email' className='border p-3 m-2 rounded-lg bg-white-500' onClick={handleColor} />
         <input defaultValue={formData.password} onChange={handleChange} type="text" placeholder='password' className='border p-3 m-2 rounded-lg bg-white-500' onClick={handleColor} />
         <button className='bg-green-700 text-white p-3 rounded-lg uppercase hover:opacity-95 mt-[20px]'>UPDATE</button>
-        <button className='bg-amber-700 text-white p-3 rounded-lg uppercase hover:opacity-95 mt-[20px]'>CREATE LISTING</button>
+
+        <Link to={"/createlisting"}>
+          <button className='bg-amber-700 text-white p-3 rounded-lg uppercase hover:opacity-95 mt-[20px] w-full h-auto'>CREATE LISTING</button>
+        </Link>
+
       </form>
       <div className='flex justify-between mt-5'>
         <span className='text-red-500 cursor-pointer text-semibold'>Delete Account</span>
