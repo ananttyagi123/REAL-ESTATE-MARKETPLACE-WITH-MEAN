@@ -41,7 +41,7 @@ export const signin = async (req, res, next) => {
 
 
 
-export const google = async(req,res,next) =>{
+export const updateUser = async(req,res,next) =>{
   try{
    const user = await user.findOne({email: req.body.email})
    if(user){
