@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import '../pages/index.css'
 import { useRef } from 'react'
 import app from './firebase.js';
+import user from '../../../api/Usermodel/user.model.js';
 import { getStorage, uploadBytesResumable, ref, getDownloadURL } from 'firebase/storage';
 const src1 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_AYwemTu1ORazF2Jjt1WGW_X-nKQ3r7SEJw&usqp=CAU"
 const Profile = () => {
@@ -45,7 +46,7 @@ const Profile = () => {
       () => {
         // Upload completed successfully
         console.log('Upload completed!');
-        img2(formData ?.avatar);
+        img2(formData?.avatar);
         getDownloadURL(StorageRef).then((downloadURL) => {
           // Update the form data state with the download URL
           setForm({ ...formData, avatar: downloadURL });
@@ -54,15 +55,24 @@ const Profile = () => {
         });
       }
     );
+  }
+
+  const handleChange = (e) => {
+    setForm({ ...formData, [e.target.id]: e.target.value });
+  }
+
+  const handleSubmit = () => {
+    e.preventDefault();
 
   }
+
   return (<>
     <div className='text-center mt-3 '>
       <h1 className='text-3xl'>Profile</h1>
     </div>
     <div className='p-3 max-w-lg mx-auto'>
       <h1 className='text-3xl font-semibold text-center my-7'></h1>
-      <form className='flex flex-col' action="">
+      <form onSubmit={handleSubmit} className='flex flex-col' action="">
 
         <input onChange={(e) => setFile(e.target.files[0])} type="file" ref={Fileref} hidden accept='image/.*' />
         <img onClick={() => Fileref.current.click()} src={img1} alt="profile" className='rounded-full h-24 w-24 self-center mt-2 mb-3' />
@@ -82,9 +92,9 @@ const Profile = () => {
 
 
 
-        <input defaultValue={current.username} type="text" placeholder='username' className='border p-3 m-2 rounded-lg bg--500' onClick={handleColor} />
-        <input type="text" placeholder='email' className='border p-3 m-2 rounded-lg bg-white-500' onClick={handleColor} />
-        <input type="text" placeholder='password' className='border p-3 m-2 rounded-lg bg-white-500' onClick={handleColor} />
+        <input defaultValue={formData.username} onChange={handleChange} type="text" placeholder='username' className='border p-3 m-2 rounded-lg bg--500' onClick={handleColor} />
+        <input defaultValue={formData.email} onChange={handleChange} type="text" placeholder='email' className='border p-3 m-2 rounded-lg bg-white-500' onClick={handleColor} />
+        <input defaultValue={formData.password} onChange={handleChange} type="text" placeholder='password' className='border p-3 m-2 rounded-lg bg-white-500' onClick={handleColor} />
         <button className='bg-green-700 text-white p-3 rounded-lg uppercase hover:opacity-95 mt-[20px]'>UPDATE</button>
         <button className='bg-amber-700 text-white p-3 rounded-lg uppercase hover:opacity-95 mt-[20px]'>CREATE LISTING</button>
       </form>
