@@ -1,9 +1,13 @@
-import react, { useState } from "react";
+import react, { useState, } from "react";
+import { useSelector } from 'react';
 import app from "./firebase";
 import { getStorage, getDownloadURL, uploadBytesResumable, ref } from "firebase/storage";
 
+
 const CreateListing = () => {
   const [files, setFile] = useState('');
+
+
   console.log(files);
   const [formData, SetForm] = useState({
     imagesURLS: [],
@@ -21,6 +25,7 @@ const CreateListing = () => {
 
   })
   const [imageUploadError, SetupImageUploadError] = useState(true);
+
 
   const [uploading, uploadImage] = useState(false);
   const [error, setError] = useState(false);
@@ -127,7 +132,8 @@ const CreateListing = () => {
         headers: {
           'Content-Type': 'application/json' // Corrected header key
         },
-        body: JSON.stringify(formData) // formData should not be wrapped in curly braces
+        body: JSON.stringify({ ...formData, useRef: currentUser._id })
+        // formData should not be wrapped in curly braces
       });
       const data = await res.json(); // Corrected to await res.json() to properly parse response
       setLoading(false);
@@ -143,7 +149,7 @@ const CreateListing = () => {
         setError(errorMessage); // Handle non-OK response
       }
     } catch (error) {
-      setError(errorMessage); // Handle any errors during fetch or JSON parsing
+      setError(error); // Handle any errors during fetch or JSON parsing
     } finally {
       setLoading(false); // Ensure loading state is set to false regardless of success or failure
     }

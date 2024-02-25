@@ -7,7 +7,10 @@ const router = express.Router();
 router.get('/test', test)
 
 // create an API for updating the User Profile Data
-router.post('/update/:id',verifyToken, updateUser);
+router.post('/update/:id', verifyToken, updateUser);
+router.get('/listing/', getUserListing);
 export default router;
+
+
 
 
