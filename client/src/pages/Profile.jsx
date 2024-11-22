@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../pages/index.css'
 import { useRef } from 'react'
 import app from './firebase.js';
-import user from '../../../api/Usermodel/user.model.js';
+import user from '../../../api/Usermodel/user.model.mjs';
 import { getStorage, uploadBytesResumable, ref, getDownloadURL } from 'firebase/storage';
 const src1 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_AYwemTu1ORazF2Jjt1WGW_X-nKQ3r7SEJw&usqp=CAU"
 const Profile = () => {
@@ -87,7 +87,7 @@ const Profile = () => {
           ) : perc === 100 ? (
             <span className='text-green-700'>Image successfully uploaded!</span>
           ) : (
-            ''
+          'hgh'
           )}
         </p>
 

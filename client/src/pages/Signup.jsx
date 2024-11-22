@@ -24,26 +24,48 @@ const Signup = () => {
 
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const res = await fetch('/api/auth/Signup', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    });
-    const data = await res.json();
-    if (data.success === false) {
-      setError(data.message);
+    e.preventDefault(); // Prevent default form submission behavior
+  
+    try {
+      // Send POST request to the API
+      const res = await fetch('/api/auth/Signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json', // Ensure headers are correct
+        },
+        body: JSON.stringify(formData), // Convert form data to JSON
+      });
+  
+      // Check if the response status indicates an error
+      if (!res.ok) {
+        throw new Error(`HTTP error! Status: ${res.status}`);
+      }
+  
+      // Parse the response JSON
+      const data = await res.json();
+  
+      // Handle the response data
+      if (data.success === false) {
+        setError(data.message || 'An error occurred');
+      } else {
+        console.log('Signup successful:', data);
+        navigate('/'); // Navigate to the homepage or appropriate page
+      }
+    } catch (error) {
+      // Handle any unexpected errors
+      console.error('Error during signup:', error);
+      setError('Something went wrong. Please try again later.');
     }
-    navigate('/');
-    console.log(data);
+  
+    // Debugging output
+    console.log('Form data being sent:', formData);
   };
-
-  const borderClass = async (e) => {
-    e => e.target.className = 'p-3 rounded-lg border-amber-500'
-  }
+  
+  // Function to dynamically add a border class
+  const borderClass = (e) => {
+    e.target.classList.add('border-amber-500');
+  };
+  
 
   return (<>
     <div className='p-3 max-w-lg mx-auto'>
