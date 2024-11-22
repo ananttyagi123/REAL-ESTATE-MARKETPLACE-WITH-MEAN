@@ -35,7 +35,14 @@ const Profile = () => {
     const fileName = new Date().getTime() + file.name;
     const StorageRef = ref(Storage, fileName);
     const uploadTask = uploadBytesResumable(StorageRef, file);
-
+    getDownloadURL(StorageRef).then((downloadURL) => {
+      // Update the img1 state with the download URL for the image
+      img2(downloadURL);
+      setForm({ ...formData, avatar: downloadURL });
+    }).catch((error) => {
+      console.error('Error getting download URL:', error);
+    });
+    
     uploadTask.on('state_changed',
       (snapshot) => {
         const progress = snapshot.totalBytes ? (snapshot.bytesTransferred / snapshot.totalBytes) * 100 : 0;
@@ -87,7 +94,7 @@ const Profile = () => {
           ) : perc === 100 ? (
             <span className='text-green-700'>Image successfully uploaded!</span>
           ) : (
-          'hgh'
+          ''
           )}
         </p>
 
